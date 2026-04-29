@@ -9,6 +9,7 @@
         <li>
             <strong>{{ note.title }}</strong><br>
             {{ note.content }}<br>
+            <a href="/update/{{ note.id }}/">Edit</a><br>
             <a href="/delete/{{ note.id }}/">Delete</a>
         </li>
     {% endfor %}

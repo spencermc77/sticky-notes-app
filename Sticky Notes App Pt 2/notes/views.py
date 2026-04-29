@@ -13,6 +13,17 @@ def create_note(request):
         return redirect('note_list')
     return render(request, 'notes/create.html')
 
+def update_note(request, id):
+    note = Note.objects.get(id=id)
+
+    if request.method == 'POST':
+        note.title = request.POST['title']
+        note.content = request.POST['content']
+        note.save()
+        return redirect('note_list')
+
+    return render(request, 'notes/update.html', {'note': note})
+
 def delete_note(request, id):
     note = Note.objects.get(id=id)
     note.delete()
